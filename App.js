@@ -31,7 +31,7 @@ const App: () => Node = () => {
   const [data, setData] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
 
-  const getMovies = async () => {
+  const getData = async () => {
     setLoading(true);
     try {
       const response = await fetch(
@@ -49,14 +49,14 @@ const App: () => Node = () => {
   const increasePage = () => {
     if (page < lastPage) {
       setPage(page + 1);
-      getMovies();
+      getData();
     }
   };
 
   const decreasePage = () => {
     if (page > 1) {
       setPage(page - 1);
-      getMovies();
+      getData();
     }
   };
 
@@ -77,17 +77,17 @@ const App: () => Node = () => {
   const resetFilters = () => {
     setCount(3);
     setPage(1);
-    getMovies();
+    getData();
     setModalVisible(false);
   };
 
   const saveChanges = () => {
-    getMovies();
+    getData();
     setModalVisible(false);
   };
 
   useEffect(() => {
-    getMovies();
+    getData();
   }, []);
 
   const PageHandler = () => (
