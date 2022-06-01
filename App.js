@@ -20,11 +20,11 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const APIKEY = '930279b0';
+const APIKEY = '########';
 
 const App: () => Node = () => {
   const [isLoading, setLoading] = useState(true);
-  const [total, setTotal] = useState(1000);
+  const [total, setTotal] = useState(0);
   const [count, setCount] = useState(3);
   const [page, setPage] = useState(1);
   const [lastPage, setLastPage] = useState(334);
@@ -39,6 +39,7 @@ const App: () => Node = () => {
       );
       const json = await response.json();
       setData(json.entries);
+      setTotal(json.total);
     } catch (error) {
       console.error(error);
     } finally {
